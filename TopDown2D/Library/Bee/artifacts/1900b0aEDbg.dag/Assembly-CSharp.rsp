@@ -382,7 +382,11 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.13f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Enemy.cs"
+"Assets/Scripts/FillStatusBar.cs"
+"Assets/Scripts/Health.cs"
+"Assets/Scripts/InventoryManager.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/ThrowAttack.cs"
 "Assets/SwordAttack.cs"
 -langversion:9.0
 

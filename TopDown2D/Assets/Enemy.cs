@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     Animator animator;
+
    public float Health
     {
         set
@@ -23,6 +24,16 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            var healthComponent = collision.GetComponent<Health>();
+            print("Damage");
+            healthComponent.TakeDamage(1);
+        }
     }
     public void Defeated()
     {

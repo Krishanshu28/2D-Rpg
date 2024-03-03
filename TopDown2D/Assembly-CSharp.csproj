@@ -62,6 +62,10 @@
   <ItemGroup>
     <Compile Include="Assets\SwordAttack.cs" />
     <Compile Include="Assets\Enemy.cs" />
+    <Compile Include="Assets\Scripts\InventoryManager.cs" />
+    <Compile Include="Assets\Scripts\ThrowAttack.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\FillStatusBar.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>

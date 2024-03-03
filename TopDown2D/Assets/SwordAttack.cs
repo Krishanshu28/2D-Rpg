@@ -36,6 +36,7 @@ public class SwordAttack : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
+            print("enemy");
             Enemy enemy = other.GetComponent<Enemy>();
             if(enemy != null )
             {
