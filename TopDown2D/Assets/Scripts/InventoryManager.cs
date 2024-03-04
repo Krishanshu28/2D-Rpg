@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public GameObject InventoryMenu;
+    public bool menuActivated;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,22 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnInventory()
+    {
+        
+        if(menuActivated)
+        {
+            Time.timeScale = 1;
+            InventoryMenu.SetActive(false);
+            menuActivated = false;
+        }
+        else if (!menuActivated)
+        {
+            Time .timeScale = 0;
+            InventoryMenu.SetActive(true);
+            menuActivated = true;
+        }
     }
 }

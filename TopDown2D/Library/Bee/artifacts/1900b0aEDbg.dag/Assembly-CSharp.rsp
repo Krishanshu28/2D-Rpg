@@ -385,6 +385,8 @@
 "Assets/Scripts/FillStatusBar.cs"
 "Assets/Scripts/Health.cs"
 "Assets/Scripts/InventoryManager.cs"
+"Assets/Scripts/Item.cs"
+"Assets/Scripts/ItemSlot.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ThrowAttack.cs"
 "Assets/SwordAttack.cs"

@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     bool canDash = true;
     public float DashCollisionOffset = 1.5f;
 
+
+    //Inventory Script ref
+    public InventoryManager inventoryManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isDashing)
+        if (isDashing )
             return;
 
         //Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -142,7 +145,11 @@ public class PlayerController : MonoBehaviour
 
     void OnSecondary_Fire()
     {
-        Instantiate(throwAttack, throwSwordPos.transform.position, Quaternion.identity).Init(throwSwordPos.transform.up);
+        if(!inventoryManager.menuActivated)
+        {
+            Instantiate(throwAttack, throwSwordPos.transform.position, Quaternion.identity).Init(throwSwordPos.transform.up);
+        }
+        
     }
     void OnMove(InputValue movementValue)
     {
