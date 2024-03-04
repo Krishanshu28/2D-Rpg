@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
 
     public void RemoveEnemy()
     {
+        //destroying enemy
         Destroy(gameObject);
     }
 }
