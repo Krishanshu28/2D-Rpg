@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     }
     public void Defeated()
     {
+        //Death Animation played
         animator.SetTrigger("Defeated");
     }
 
