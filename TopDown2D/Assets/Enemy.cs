@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour
 {
     Animator animator;
 
-
-    //health component fro enemy
    public float Health
     {
         set
