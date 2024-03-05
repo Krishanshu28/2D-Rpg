@@ -6,18 +6,13 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
     public bool menuActivated;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnInventory()
     {
@@ -35,4 +30,12 @@ public class InventoryManager : MonoBehaviour
             menuActivated = true;
         }
     }
+    
+
+    public void AddItem(string itemName, int quantity, Sprite itemSprite)
+    {
+        Debug.Log("item Name= " + itemName + " quantity= " + quantity + " itemSprite= " + itemSprite);
+    }
+    
+ 
 }

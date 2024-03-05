@@ -21,6 +21,7 @@ public class ThrowAttack : MonoBehaviour
             if (enemy != null)
             {
                 enemy.Health -= damage;
+                Destroy(gameObject, 3f);
             }
         }
     }
