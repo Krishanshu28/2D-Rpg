@@ -25,7 +25,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
     
-
     public void AddItem(string itemName, int quantity, Sprite itemSprite)
     {
         Debug.Log("item Name= " + itemName + " quantity= " + quantity + " itemSprite= " + itemSprite);

@@ -16,7 +16,6 @@ public class Item : MonoBehaviour
     private InventoryManager inventoryManager;
 
     bool itemPickUp;
-    // Start is called before the first frame update
     void Awake()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
@@ -26,15 +25,14 @@ public class Item : MonoBehaviour
         
     }
 
+    //for picking up item from "F" key and to add from gamepad 
     void OnItemPickUp()
     {
-        
         itemPickUp = true;
        
     }
     private void OnTriggerEnter2D(Collider2D collision)
-    { //ye bnd krna ho ki jis 
-        
+    { 
         if(collision.gameObject.CompareTag("Player") && itemPickUp)
         {
             //print("pick");
