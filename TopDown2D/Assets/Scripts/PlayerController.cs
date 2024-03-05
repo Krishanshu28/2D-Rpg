@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     //Inventory Script ref
     public InventoryManager inventoryManager;
+
     // Start is called before the first frame update
     void Start()
     {

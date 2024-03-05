@@ -17,7 +17,6 @@ public class SwordAttack : MonoBehaviour
 
     public void AttackRight()
     {
-        
         swordCollider.enabled = true;
         transform.localPosition = rightAttackOffset;
     }
