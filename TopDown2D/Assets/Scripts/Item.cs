@@ -18,11 +18,11 @@ public class Item : MonoBehaviour
     bool itemPickUp;
     void Awake()
     {
-        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        
     }
     private void Start()
     {
-        
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
     //for picking up item from "F" key and to add from gamepad 
