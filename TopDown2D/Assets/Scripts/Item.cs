@@ -40,8 +40,16 @@ public class Item : MonoBehaviour
         if(collision.gameObject.CompareTag("Player") && itemPickUp)
         {
             //print("pick");
-            inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
-            Destroy(gameObject);
+            int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+            if(leftOverItems <= 0)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                quantity = leftOverItems;
+            }
+            
             itemPickUp=false;
         }
     }

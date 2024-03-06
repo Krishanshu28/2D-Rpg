@@ -15,6 +15,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public string itemDescription;
     public Sprite emptySprite;
 
+    [SerializeField]
+    private int maxNumberOfItems;
+
     //=====ITEM SLOT====//
     [SerializeField]
     private TMP_Text quantityText;
@@ -36,17 +39,40 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
-    public void AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
-        this.itemName = itemName;
-        this.quantity = quantity;
-        this.itemSprite = itemSprite;
-        this.itemDescription = itemDescription;
-        isFull = true;
+        //Check to see if slot is already full
+        if (isFull)
+            return quantity;
 
-        quantityText.text = quantity.ToString();
-        quantityText.enabled = true;
+        //Update NAME
+        this.itemName = itemName;
+
+        //Update IMAGE
+        this.itemSprite = itemSprite;
         itemImage.sprite = itemSprite;
+
+        //Update DESCRIPTION
+        this.itemDescription = itemDescription;
+
+        //Update QUANTITY
+        this.quantity += quantity;
+        if (this.quantity >= maxNumberOfItems)
+        {
+            quantityText.text = maxNumberOfItems.ToString();
+            quantityText.enabled = true;
+            isFull = true;
+
+            //Return the LEFTOVERS
+            int extraItems = this.quantity - maxNumberOfItems;
+            this.quantity = maxNumberOfItems;
+            return extraItems;
+        }
+
+        //Update Quantity text
+        quantityText.text = this.quantity.ToString();
+        quantityText.enabled = true;
+        return 0;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -63,6 +89,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
+        if (thisItemSelected)
+        {
+            Debug.Log("health1");
+            inventoryManager.UseItem(itemName);
+        }
+            
+
         inventoryManager.DeselectAllSlots();
         selectedShader.SetActive(true);
         thisItemSelected = true;

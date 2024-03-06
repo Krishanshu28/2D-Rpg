@@ -66,5 +66,14 @@ public class Health : MonoBehaviour
             //dead
         }
     }
+
+    public void Increasehealth(int amount)
+    {
+        currentHealth += amount;
+        if(currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
 }
 

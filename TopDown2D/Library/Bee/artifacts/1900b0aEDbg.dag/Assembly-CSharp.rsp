@@ -388,6 +388,7 @@
 "Assets/Scripts/Item.cs"
 "Assets/Scripts/ItemSlot.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/SO/ItemSO.cs"
 "Assets/Scripts/ThrowAttack.cs"
 "Assets/SwordAttack.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
