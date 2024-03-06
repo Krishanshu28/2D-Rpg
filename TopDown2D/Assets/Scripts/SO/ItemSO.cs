@@ -12,13 +12,22 @@ public class ItemSO : ScriptableObject
     public AttributeToChange attributeToChange = new AttributeToChange();
     public int amountToChangeAttribute;
 
-    public void UseItem()
+    public bool UseItem()
     {
         if(statToChange == StatToChange.health)
         {
-            
-            GameObject.Find("Player").GetComponent<Health>().Increasehealth(amountToChangeStat);
+            Health health = GameObject.Find("Player").GetComponent<Health>();
+            if(health.currentHealth == health.maxHealth)
+            {
+                return false;
+            }
+            else
+            {
+                health.Increasehealth(amountToChangeStat);
+                return true;
+            }     
         }
+        return false;
     }
 
     public enum StatToChange

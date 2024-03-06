@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField]
-    private string itemName;
+    public string itemName;
 
-    [SerializeField]
-    private int quantity;
 
-    [SerializeField]
-    private Sprite sprite;
+    public int quantity;
+
+    public Sprite sprite;
 
     [TextArea]  //inspector pe direct likh lena
-    [SerializeField]
-    private string itemDescription;
+    public string itemDescription;
 
     private InventoryManager inventoryManager;
 
     bool itemPickUp;
-    void Awake()
-    {
-        
-    }
+    
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
+using Unity.VisualScripting;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
@@ -91,24 +93,78 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if (thisItemSelected)
         {
-            Debug.Log("health1");
-            inventoryManager.UseItem(itemName);
+            bool usable = inventoryManager.UseItem(itemName);
+            if (usable)
+            {
+                this.quantity -= 1;
+                quantityText.text = this.quantity.ToString();
+                if (this.quantity <= 0)
+                    EmptySlot();
+            }
         }
             
-
-        inventoryManager.DeselectAllSlots();
-        selectedShader.SetActive(true);
-        thisItemSelected = true;
-        ItemDescriptionNameText.text = itemName;
-        ItemDescriptionText.text = itemDescription;
-        ItemDescriptionImage.sprite = itemSprite;
-        if(ItemDescriptionImage.sprite == null)
+        else
         {
-            ItemDescriptionImage.sprite = emptySprite;
+            inventoryManager.DeselectAllSlots();
+            selectedShader.SetActive(true);
+            thisItemSelected = true;
+            ItemDescriptionNameText.text = itemName;
+            ItemDescriptionText.text = itemDescription;
+            ItemDescriptionImage.sprite = itemSprite;
+            if (ItemDescriptionImage.sprite == null)
+            {
+                ItemDescriptionImage.sprite = emptySprite;
+            }
         }
+        
     }
+
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        itemImage.sprite = emptySprite;
+
+        ItemDescriptionNameText.text = "";
+        ItemDescriptionText.text = "";
+        ItemDescriptionImage.sprite = emptySprite;
+    }
+
     public void OnRightClick()
     {
+        //Create a new item
+        GameObject itemToDrop = new GameObject();
+        Item newItem = itemToDrop.AddComponent<Item>();
+        newItem.quantity = 1;
+        newItem.itemName = itemName;
+        newItem.sprite = itemSprite;
+        newItem.itemDescription = itemDescription;
+        itemToDrop.tag = "Enemy";
+
+        //Create and modify the SR
+        GameObject sword = new GameObject(itemName);
+        SpriteRenderer sr = sword.AddComponent<SpriteRenderer>();
+        sr.sprite = itemSprite;
+        sr.sortingOrder = 1;
+        sword.transform.parent = itemToDrop.transform;
+        //in case add a sorting layer add this to
+        //sr.sortingLayerName = "";
+
+        //Add a collider
+        var col = itemToDrop.AddComponent<BoxCollider2D>();
+        var rb = itemToDrop.AddComponent<Rigidbody2D>();
+        col.isTrigger = true;
+        rb.gravityScale = 0;
+        
+
+        //Set the location
+        itemToDrop.transform.position = GameObject.FindWithTag("Player").transform.position + new Vector3(0.05f, 0f, 0f);
+        itemToDrop.transform.localScale = new Vector3(0.14f, 0.14f, 1f);
+
+        //Subtract item
+        this.quantity -= 1;
+        quantityText.text = this.quantity.ToString();
+        if (this.quantity <= 0)
+            EmptySlot();
 
     }
 }
