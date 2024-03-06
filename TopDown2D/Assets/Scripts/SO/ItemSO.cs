@@ -11,7 +11,7 @@ public class ItemSO : ScriptableObject
 
     public AttributeToChange attributeToChange = new AttributeToChange();
     public int amountToChangeAttribute;
-
+    
     public bool UseItem()
     {
         if(statToChange == StatToChange.health)
@@ -30,6 +30,7 @@ public class ItemSO : ScriptableObject
         return false;
     }
 
+    //enum to change player stat
     public enum StatToChange
     {
         none,
