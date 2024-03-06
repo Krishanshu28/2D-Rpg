@@ -139,6 +139,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         newItem.sprite = itemSprite;
         newItem.itemDescription = itemDescription;
         itemToDrop.tag = "Enemy";
+        //pick nhi kr rha abhi
 
         //Create and modify the SR
         GameObject sword = new GameObject(itemName);
