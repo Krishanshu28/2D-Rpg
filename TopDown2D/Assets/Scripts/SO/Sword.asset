@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   statToChange: 1
-  amountToChangeStat: 100
+  amountToChangeStat: 5
   attributeToChange: 1
-  amountToChangeAttribute: 100
+  amountToChangeAttribute: 5
